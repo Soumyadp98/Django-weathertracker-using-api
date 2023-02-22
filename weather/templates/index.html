@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="content_wrapper" id="app">
+    <div v-if="infos.city">
+        <h1>
+            Weather
+            <div class="date">{{today}}</div>
+        </h1>
+        <form class="" method="get">
+            <input class="form-control input" name="city" placeholder="Enter the name of city">
+            <button class="submit" type="submit">Submit</button>
+        </form>
+        <div class="weather_card">
+            <div class="weather_card_img" :style="{backgroundImage:https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrYwCW5cXvRp135TeBVnr6SLinBodqLwS2xA&usqp=CAU}">
+                <div class="weather_card_state">
+                    <span class="material-icons">
+                        <img src="http://openweathermap.org/img/wn/{{data.icon}}.png">
+                    </span>
+                </div>
+            </div>
+
+            <div class="weather_card_infos">
+                <div class="weather_card_infos_title">
+                    <span>City:-<b>{{data.city}}</b>       Country:-{{data.country}} <br> Lat:-{{data.lat}} Lon:-{{data.long}}</span>
+                </div>
+                <div class="weather_card_infos_temp">
+                    {{data.description}}<br/>
+                    {{data.cecius_temperature}}°C / {{data.kel_temperature}}°K
+                    <div class="weather_card_infos_bottom">
+                        Min:{{data.min_cel_temperature}}°C  - Max: {{data.max_cel_temperature}}°C
+                    </div>
+                </div>
+                <div class="bottom">
+                    <hr>
+                    <div class="weather_card_infos_bottom">
+                        Humidity:{{data.humidity}}  - Pressure: {{data.pressure}}Pa
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
